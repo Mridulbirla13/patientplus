@@ -47,7 +47,7 @@ const PatientForm = () => {
 
       const user = await createUser(userData);
       if(user){
-        router.push(`/patients/${user.id}/register`);
+        router.push(`/patients/${user.$id}/register`);
       }
     } catch(error){
       console.log(error);
@@ -69,7 +69,7 @@ const PatientForm = () => {
             name = "name"
             label = "Full name"
             placeholder = "Mridul Birla"
-            iconSrc="/assets/assets/icons/user.svg"
+            iconSrc="assets/icons/user.svg"
             iconAlt="user"
           />
 
@@ -79,7 +79,7 @@ const PatientForm = () => {
             name = "email"
             label = "Email"
             placeholder = "mridulbirla@gmail.com"
-            iconSrc="/assets/assets/icons/email.svg"
+            iconSrc="assets/icons/email.svg"
             iconAlt="user"
           />
 

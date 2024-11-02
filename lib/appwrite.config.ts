@@ -11,12 +11,12 @@ export const {
     NEXT_PUBLIC_ENDPOINT: ENDPOINT
 }=process.env
 
-const client = new sdk.Client() 
+const client = new sdk.Client()  //Initialises new Appwrite client instance
 
 client
     .setEndpoint(ENDPOINT!)
     .setProject(PROJECT_ID!)
-    .setKey(API_KEY!)
+    .setKey(API_KEY!);
 
     export const database = new sdk.Databases(client);
     export const storage = new sdk.Storage(client);
