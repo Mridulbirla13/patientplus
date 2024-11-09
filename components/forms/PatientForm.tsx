@@ -39,19 +39,30 @@ const PatientForm = () => {
   });
 
 
-  async function onSubmit({name, email, phone}: z.infer<typeof UserFormValidation>) {
+  const onSubmit= async(values: z.infer<typeof UserFormValidation>)=> {
     setisLoading(true);
 
     try{
-      const userData = {name, email, phone};
+      const userData = {
+        name: values.name, 
+        email: values.email, 
+        phone: values.phone,
+      };
 
-      const user = await createUser(userData);
-      if(user){
-        router.push(`/patients/${user.$id}/register`);
+      const newUser = await createUser(userData);
+
+      if(newUser){
+        console.log("Redirecting to:", `/patients/${newUser.$id}/register`);
+        router.push(`/patients/${newUser.$id}/register`);
+      }
+      else {
+        console.log("User creation failed or user ID not returned.");
       }
     } catch(error){
       console.log(error);
     }
+
+    // setisLoading(false);
   }
 
   return (
@@ -69,7 +80,7 @@ const PatientForm = () => {
             name = "name"
             label = "Full name"
             placeholder = "Mridul Birla"
-            iconSrc="assets/icons/user.svg"
+            iconSrc="/assets/icons/user.svg"
             iconAlt="user"
           />
 
@@ -79,7 +90,7 @@ const PatientForm = () => {
             name = "email"
             label = "Email"
             placeholder = "mridulbirla@gmail.com"
-            iconSrc="assets/icons/email.svg"
+            iconSrc="/assets/icons/email.svg"
             iconAlt="user"
           />
 
