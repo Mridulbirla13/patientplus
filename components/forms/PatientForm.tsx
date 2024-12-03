@@ -60,7 +60,7 @@ const PatientForm = () => {
       console.log(error);
     }
 
-    // setisLoading(false);
+    setisLoading(false);
   }
 
   return (
